@@ -228,6 +228,8 @@ muffin_sources = [
   'backends/meta-settings-private.h',
   'backends/meta-stage.c',
   'backends/meta-stage-private.h',
+  'backends/meta-window-dbus.c',
+  'backends/meta-window-dbus.h',
   'backends/x11/cm/meta-backend-x11-cm.c',
   'backends/x11/cm/meta-backend-x11-cm.h',
   'backends/x11/cm/meta-cursor-sprite-xfixes.c',
@@ -724,6 +726,13 @@ dbus_idle_monitor_built_sources = gnome.gdbus_codegen('meta-dbus-idle-monitor',
     object_manager: true,
   )
 muffin_built_sources += dbus_idle_monitor_built_sources
+
+dbus_window_built_sources = gnome.gdbus_codegen('meta-dbus-window',
+    'org.cinnamon.Muffin.Window.xml',
+    interface_prefix: 'org.cinnamon.Muffin.',
+    namespace: 'MetaDBus'
+  )
+muffin_built_sources += dbus_window_built_sources
 
 muffin_marshal = gnome.genmarshal('meta-marshal',
     sources: ['meta-marshal.list'],
