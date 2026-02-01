@@ -48,6 +48,7 @@
 #include "backends/meta-input-settings-private.h"
 #include "backends/meta-logical-monitor.h"
 #include "backends/meta-stage-private.h"
+#include "backends/meta-window-dbus.h"
 #include "backends/x11/meta-backend-x11.h"
 #include "backends/x11/meta-event-x11.h"
 #include "backends/x11/cm/meta-backend-x11-cm.h"
@@ -1015,6 +1016,7 @@ meta_display_open (void)
       meta_display_unset_input_focus (display, timestamp);
     }
 
+  meta_window_init_dbus ();
   meta_idle_monitor_init_dbus ();
 
   display->sound_player = g_object_new (META_TYPE_SOUND_PLAYER, NULL);
