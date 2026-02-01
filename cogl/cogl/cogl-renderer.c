@@ -736,6 +736,8 @@ cogl_renderer_create_dma_buf (CoglRenderer  *renderer,
                               int            height,
                               GError       **error)
 {
+  return NULL;
+
   const CoglWinsysVtable *winsys = _cogl_renderer_get_winsys (renderer);
 
   if (winsys->renderer_create_dma_buf)
